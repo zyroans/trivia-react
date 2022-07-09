@@ -1,0 +1,43 @@
+* {
+  font-family: "Patrick Hand", cursive;
+  margin: 0;
+  background-color: #72438c;
+}
+.container {
+  text-align: center;
+  background-color: #72438c;
+}
+.button {
+  border: none;
+  background-color: #991c65;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+.button:hover {
+  background-color: #27c34b;
+}
+.answerContainer {
+  height: auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto auto;
+  padding-right: 40px;
+}
+.answer {
+  height: max-content;
+  background-color: #991c65;
+  border: none;
+  border-radius: 5px;
+  font-size: 30px;
+  cursor: pointer;
+}
+.answer:hover {
+  background-color: #27c34b;
+}
