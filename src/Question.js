@@ -4,6 +4,7 @@ import { useState } from "react";
 export default function Question({ question, renderNext, questionLength }) {
   let allAnswers = [];
   const [counter, setCounter] = useState(1);
+  const [score, setScore] = useState(0);
 
   function shuffle(array) {
     let i = array.length;
@@ -17,11 +18,19 @@ export default function Question({ question, renderNext, questionLength }) {
   function checkAnswer(id) {
     if (allAnswers[id].isCorrect) {
       alert("Correct");
+      setScore(score + 1);
     } else {
       alert("You miss that");
     }
-    renderNext();
-    setCounter(counter + 1);
+    if (counter === questionLength) {
+      alert(`Congratulations, your score is ${score} `);
+      renderNext();
+      setCounter(0);
+      setScore(0);
+    } else {
+      renderNext();
+      setCounter(counter + 1);
+    }
   }
   allAnswers = question.incorrect_answers.map((item) => {
     return {
