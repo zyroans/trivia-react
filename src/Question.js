@@ -1,7 +1,10 @@
 import React from "react";
+import { useState } from "react";
 
-export default function Question({ question, renderNext }) {
+export default function Question({ question, renderNext, questionLength }) {
   let allAnswers = [];
+  const [counter, setCounter] = useState(1);
+
   function shuffle(array) {
     let i = array.length;
     while (i--) {
@@ -18,6 +21,7 @@ export default function Question({ question, renderNext }) {
       alert("You miss that");
     }
     renderNext();
+    setCounter(counter + 1);
   }
   allAnswers = question.incorrect_answers.map((item) => {
     return {
@@ -47,7 +51,9 @@ export default function Question({ question, renderNext }) {
           );
         })}
       </ul>
-      <p className="counter" key={"counter"}></p>
+      <p className="counter" key={"counter"}>
+        {counter}/{questionLength}
+      </p>
     </div>
   );
 }

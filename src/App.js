@@ -45,7 +45,11 @@ function App() {
           getQuestionList={getQuestionList}
         />
       ) : (
-        <Question question={questions[index]} renderNext={renderNext} />
+        <Question
+          question={questions[index]}
+          renderNext={renderNext}
+          questionLength={questions.length}
+        />
       )}
     </>
   );
