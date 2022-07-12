@@ -1,5 +1,6 @@
 import React from "react";
 import { useState } from "react";
+import parse from "html-react-parser";
 
 export default function Question({ question, renderNext, questionLength }) {
   let allAnswers = [];
@@ -43,10 +44,10 @@ export default function Question({ question, renderNext, questionLength }) {
     isCorrect: true,
   });
   allAnswers = shuffle(allAnswers);
-
+  console.log(allAnswers);
   return (
     <div className="container">
-      <h1 key={"qtitle"}>{question.question}</h1>
+      <h1 key={"qtitle"}>{parse(question.question)}</h1>
       <ul key={"questionList"} className="answerContainer">
         {allAnswers.map((answer, index) => {
           return (
@@ -55,7 +56,7 @@ export default function Question({ question, renderNext, questionLength }) {
               className="answer"
               onClick={() => checkAnswer(index)}
             >
-              {answer.answer}
+              {parse(answer.answer)}
             </button>
           );
         })}
